@@ -34,6 +34,7 @@ object Main extends App {
     "staging_fs_url" -> conf.getString("functional-tests.filepath"),
     "hdfs_url" -> conf.getString("functional-tests.filepath"),
     "num_partitions" -> conf.getString("functional-tests.num_partitions"),
+    "numPartitions" -> conf.getString("functional-tests.num_partitions"),
     "fileformat" -> "parquet"
   )
   val auth = if(conf.getString("functional-tests.password").nonEmpty) {
