@@ -251,9 +251,10 @@ class VerticaDistributedFilesystemReadPipe(
       } else {
         logger.info("Exporting.")
         val startTime: Long = System.currentTimeMillis()
-        jdbcLayer.execute(exportStatement).leftMap(err => ExportFromVerticaError(err))
+        val res = jdbcLayer.execute(exportStatement).leftMap(err => ExportFromVerticaError(err))
         val endTime: Long = System.currentTimeMillis()
         println("EXPORT TOOK: " + (endTime - startTime) + " MS")
+        res
       }
 
       // Retrieve all parquet files created by Vertica
